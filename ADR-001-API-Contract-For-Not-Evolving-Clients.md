@@ -1,5 +1,9 @@
 # Reject semantic versioning for clients that don’t evolve together
 
+- **Decision**: Use non-linear single digit versioning
+- **Status**: Accepted
+- **Date**: 2024-01-09
+
 ### 1. Context
 We were migrating a long-running legacy monolith to a new API platform.\
 The system served multiple consumers, each with its own lifecycle, capabilities, and constraints. Some clients evolved quickly, others slowly — and a few could not be updated at all.
