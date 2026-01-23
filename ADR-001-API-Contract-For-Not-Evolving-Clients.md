@@ -76,7 +76,14 @@ This approach led to:
 
 Most importantly, it shifted complexity away from runtime behavior and into explicit design decisions.
 
-### 8. Closing thought
+### 8. Signals for Re-evaluation
+This decision would be re-evaluated if:
+- All active clients can reliably declare and upgrade API versions
+- Client lifecycles converge instead of remaining asymmetric
+- Contract proliferation begins to slow overall platform evolution
+- Operational overhead of parallel versions outweighs runtime safety
+
+### 9. Closing thought
 **Compatibility is not a promise — it’s a decision.**
 
 APIs should communicate truth, even when that truth introduces friction.
