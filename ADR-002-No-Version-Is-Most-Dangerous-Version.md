@@ -1,5 +1,11 @@
-# When “No Version” Is the Most Dangerous Version
+# Never default unversioned requests to “latest”
 ## Making Default API Behavior Explicit During a Legacy Migration
+
+This ADR applies the contract strategy from ADR-0001 to the specific question of how to handle unversioned requests.
+
+- **Decision**: Map unversioned requests to **v1** at the gateway
+- **Status**: Accepted
+- **Date**: 2024-03-12
 
 ### 1. Context
 During the migration of a long-running legacy monolith to a new API platform, we had to support a wide range of existing consumers.
@@ -78,7 +84,14 @@ Making default behavior explicit had several effects:
 
 Most importantly, the system stopped relying on assumptions that no one remembered making.
 
-### 8. Closing thought
+### 8. Signals for Re-evaluation
+We would revisit this rule if:
+- All clients can reliably send explicit API versions
+- We can enforce version headers at the edge (gateway) with confidence
+- v1 becomes too costly to maintain relative to the remaining legacy clients
+- We introduce a safer compatibility mechanism (e.g. negotiated media types) that is actually reliable in practice
+
+### 9. Closing thought
 **The most dangerous API behavior is the one nobody realizes exists.**\
 If a system depends on implicit defaults, it will eventually fail in ways that are difficult to explain — and even harder to fix.
 Making behavior explicit is not about rigidity.\
