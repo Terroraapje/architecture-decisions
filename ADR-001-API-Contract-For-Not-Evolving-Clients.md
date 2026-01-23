@@ -1,4 +1,4 @@
-# Designing API Contracts for Clients That Don’t Evolve Together
+# Reject semantic versioning for clients that don’t evolve together
 
 ### 1. Context
 We were migrating a long-running legacy monolith to a new API platform.\
